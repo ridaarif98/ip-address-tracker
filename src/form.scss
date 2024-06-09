@@ -1,3 +1,5 @@
+$small: 768px;
+
 .ip-form {
   margin: 0;
   padding: 4%;
@@ -65,5 +67,29 @@
         text-wrap: wrap;
     }
    }
+  }
+  @media screen and (max-width: $small){
+    h1 {
+      font-weight: 500;
+    }
+    form {
+      margin-bottom: 10%;
+      input {
+        width: 68%;
+      }
+    }
+    .ip-data {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 5%;
+      .data {
+        border-right: none;
+        padding: 2% 3%;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+    }
   }
 }
