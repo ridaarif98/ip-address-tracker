@@ -10,18 +10,18 @@ function IPForm() {
   const checkIpPattern = /^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$/;
   const checkDomainPattern = /^(?!-)(?!.*--)[A-Za-z0-9-]{1,63}(?<!-)\.([A-Za-z0-9-]{1,63}\.)*[A-Za-z]{2,6}$/;
 
-  // useEffect(() => {
-  //   try{
-  //     const getIpData = async () => {
-  //       const result =await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_NpqdxEKOgaFvCrNVat6uV8AGpNa4f&ipAddress=8.8.8.8`)
-  //       const data =await result.json()
-  //       setAddress(data)
-  //     }
-  //     getIpData()
-  //   }catch(error){
-  //     console.trace(error)
-  //   }
-  // },[])
+  useEffect(() => {
+    try{
+      const getIpData = async () => {
+        const result =await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_NpqdxEKOgaFvCrNVat6uV8AGpNa4f&ipAddress=8.8.8.8`)
+        const data =await result.json()
+        setAddress(data)
+      }
+      getIpData()
+    }catch(error){
+      console.trace(error)
+    }
+  },[])
 
   const fetchIpData = async () => {
     const result =await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_NpqdxEKOgaFvCrNVat6uV8AGpNa4f&${
@@ -36,7 +36,6 @@ function IPForm() {
   const handleSubmit = (e) => {
       e.preventDefault();
       fetchIpData();
-      setIpAdress("")
   }
 
   return(
@@ -73,7 +72,7 @@ function IPForm() {
       </div>
     </div>
     {address &&
-        <MapContainer center={[address.location.lat, address.location.lng]} zoom={13} scrollWheelZoom={false} style={{ height: "60vh", width: "100%" }}>
+        <MapContainer center={[address.location.lat, address.location.lng]} zoom={13} scrollWheelZoom={false} style={{ height: "80vh", width: "100%" }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
