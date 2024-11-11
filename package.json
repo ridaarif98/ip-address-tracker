@@ -15,7 +15,8 @@
     "web-vitals": "^2.1.4"
   },
   "resolutions": {
-    "rollup": "^3.29.5"
+    "rollup": "^3.29.5",
+    "postcss": "^8.4.31"
   },
   "scripts": {
     "start": "react-scripts start",
